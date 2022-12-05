@@ -13,9 +13,6 @@ export const Login = () => {
 /*     if(userToken!==""){
       window.location.href = "/profile"
     } */
-    if(window.location.href==="/"){
-     window.location.href = "/login"
-    }
     window.localStorage.setItem("token","")
   },[])
   
