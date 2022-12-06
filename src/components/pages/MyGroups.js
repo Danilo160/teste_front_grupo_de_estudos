@@ -333,7 +333,7 @@ export const MyGroups = () => {
         }
         else{
           setLabel("Erro inesperado!")
-          alert("Erro inesperado pode estar associado ao tamanho PDF! Testes foram realizados com PDF de até 1.5MB")
+          alert("Erro inesperado pode estar associado ao tamanho do PDF! Testes foram realizados com PDF de até 1.5MB")
         }
       })
       .catch(error =>{if(error){ setLabel("Falha no servidor!")}})
