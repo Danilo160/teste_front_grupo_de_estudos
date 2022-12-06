@@ -7,6 +7,7 @@ const userId = window.localStorage.getItem("id");
 const userToken = window.localStorage.getItem("token");
 
 
+
 Modal.setAppElement("#root");
 
 export const MyGroupsResullt = (props) => {
@@ -98,8 +99,21 @@ export const MyGroupsResullt = (props) => {
   }
 
   function render(){
-    var win = window.open();
-    win.document.write('<iframe src="' + groupMaterial  + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>');
+    const getBlob = () =>{
+      fetch(groupMaterial)
+      .then(res => res.blob())
+      .then(blob => {
+        console.log(blob);
+        var url = window.URL.createObjectURL(blob);
+        window.location.href = url
+        console.log(url)
+      });
+    }
+
+    getBlob()
+    
+  /*   var win = window.open();
+    win.document.write('<iframe src="' + groupMaterial  + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>'); */
   }
 
   function closeModal() {
@@ -173,10 +187,6 @@ export const MyGroupsResullt = (props) => {
                     </form>
                   </Modal>
 
-                  {/*                         <div>
-                        <img src='https://cdn-icons-png.flaticon.com/512/3483/3483436.png' width={30} height={30} alt="exit" style={{cursor:'pointer'}}/>
-                        <p>Sair do grupo</p>
-                        </div> */}
 
             </div>
 

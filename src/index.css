@@ -140,6 +140,14 @@ code {
   display: flex;
   justify-content: center;
 }
+
+.containerLoadingProfile {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  display: flex;
+  justify-content: center;
+}
+
 .containerPage {
   margin: 0;
   position: absolute;

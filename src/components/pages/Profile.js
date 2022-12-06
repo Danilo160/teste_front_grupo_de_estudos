@@ -1,5 +1,6 @@
 import React, {useState } from "react";
 import Navbar from "../Navbar/Navbar"
+import ReactLoading from 'react-loading';
 
 const userName = window.localStorage.getItem("nome");
 const userId = window.localStorage.getItem("id");
@@ -23,7 +24,7 @@ export const Profile = () => {
 
   const noProfile = "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
 
-
+  const [loading, setLoading] = useState(false)
   const [image, setImage] = useState(photo)
 
 
@@ -71,6 +72,7 @@ export const Profile = () => {
         if(e.target.files[0].size >=5000000){
           alert("Tamanho da imagem atingiu o limite!")
         }else{
+          setLoading(true)
           setImage(URL.createObjectURL(e.target.files[0]))
           imageUploaded()
         }
@@ -82,9 +84,11 @@ export const Profile = () => {
   }
 
   const deletePhoto = () => {
+    
     if(userPhoto===""){
       alert("Não há foto!")
     }else{
+    setLoading(true)
     var data = JSON.stringify({
       foto: "",
       token: userToken
@@ -135,6 +139,9 @@ export const Profile = () => {
         {image===""?<img src={noProfile} style={{opacity: 0.5}} id="userPhoto" alt="Foto de perfil" title="Atualizar foto de perfil" className="userPhoto" onClick={select}/>:
         <img src={image} id="userPhoto" onClick={select} alt="Foto de perfil" title="Atualizar foto de perfil" className="userPhoto"/>}
 
+        {loading===true?<div className="containerLoadingProfile">
+              <ReactLoading type={"spin"} color={"#528abe"} height={20} width={20} />
+        </div>: null}
 
         <div className="buttonRemovePhoto" onClick={deletePhoto}><p>Remover foto</p></div>
 

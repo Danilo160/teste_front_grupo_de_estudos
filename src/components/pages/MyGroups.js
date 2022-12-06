@@ -343,7 +343,6 @@ export const MyGroups = () => {
 
   function convertToBase64() {
     var selectedFile = document.getElementById("filePDF").files;
-
     if (selectedFile.length > 0) {
         var fileToLoad = selectedFile[0];
         var fileReader = new FileReader();
